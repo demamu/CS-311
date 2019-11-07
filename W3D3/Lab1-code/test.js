@@ -28,24 +28,25 @@ describe("Employee class", function() {
     describe("printPaymentAmount(date) method", function() {
         it("returns a string that describes how much this employee was paid on that date", function() {
             let emp = new Employee("Jim", "Jones");
-            emp.addEntry("1/15/2019", 3005.50);
-            emp.addEntry("2/15/2019", 3150.00);
-            emp.addEntry("3/15/2019", 4200.00);
-            emp.addEntry("4/15/2019", 2988.50);
-            assert.equal(emp.printPaymentAmount("1/15/2019"),"Jim Jones was paid 3005.50 on 1/15/2019");
-            assert.equal(emp.printPaymentAmount("2/15/2019"),"Jim Jones was paid 3150.00 on 2/15/2019");
-            assert.equal(emp.printPaymentAmount("3/15/2019"),"Jim Jones was paid 4200.00 on 3/15/2019");
-            assert.equal(emp.printPaymentAmount("4/15/2019"),"Jim Jones was paid 2988.50 on 4/15/2019");
+            emp.addEntry("1/15/2019", 3005);
+            emp.addEntry("2/15/2019", 3150);
+            emp.addEntry("3/15/2019", 4200);
+            emp.addEntry("4/15/2019", 2988);
+            assert.equal(emp.printPaymentAmount("1/15/2019"),"Jim Jones was paid 3005 on 1/15/2019");
+            assert.equal(emp.printPaymentAmount("2/15/2019"),"Jim Jones was paid 3150 on 2/15/2019");
+            assert.equal(emp.printPaymentAmount("3/15/2019"),"Jim Jones was paid 4200 on 3/15/2019");
+            assert.equal(emp.printPaymentAmount("4/15/2019"),"Jim Jones was paid 2988 on 4/15/2019");
+            assert.equal(emp.printPaymentAmount("5/15/2019"),"Jim Jones did not receive a paycheck on 5/15/2019");
         });
     });
     describe("printAveragePaycheck() method", function(){
         it("Returns a string that describe the average amount paid to this employee", function() {
             let emp = new Employee("Jim", "Jones");
-            emp.addEntry("1/15/2019", 3005.50);
-            emp.addEntry("2/15/2019", 3150.00);
-            emp.addEntry("3/15/2019", 4200.00);
-            emp.addEntry("4/15/2019", 2988.50);
-            assert.equal(emp.printAveragePaycheck(), "Average paycheck for Jim Jones was 3336.00")
+            emp.addEntry("1/15/2019", 3005);
+            emp.addEntry("2/15/2019", 3150);
+            emp.addEntry("3/15/2019", 4200);
+            emp.addEntry("4/15/2019", 2988);
+            assert.equal(emp.printAveragePaycheck(), "Average paycheck for Jim Jones was 3336");
         });
     });
 });

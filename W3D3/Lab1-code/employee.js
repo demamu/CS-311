@@ -15,6 +15,8 @@ class Employee {
         this._salaryRecord = new Map();
     }
 
+    
+    
     /**
      * Adds the arguments to the salary record
      * @param {String} dateStr a string representing a date 
@@ -22,7 +24,8 @@ class Employee {
      * @returns {undefined}
      */
     addEntry(dateStr, amount) {
-        this._salaryRecord.set(dateStr,amount);
+        this._salaryRecord.set(dateStr, amount);
+       
     }
 
     /**
@@ -32,11 +35,11 @@ class Employee {
      * @returns {String} text describing how much was paid
      */
     printPaymentAmount(date) {
-        if (this._salaryRecord.has(date)) {
-            return `${this.firstName} ${this.lastName} was paid ${this._salaryRecord.get(date).toFixed(2)} on ${date}`;
-        } else {
-            return `${this.firstName} ${this.lastName} did not receive a paycheck on ${date}`;
+        if(this._salaryRecord.has(date)){
+            return `${this.firstName} ${this.lastName} was paid ${this._salaryRecord.get(date)} on ${date}`;
         }
+        else {return `${this.firstName} ${this.lastName} did not receive a paycheck on ${date}`};
+      
     }
 
     /**
@@ -44,16 +47,10 @@ class Employee {
      * @returns {String} describes average amount for this Employee
      */
     printAveragePaycheck() {
-       
-        if (this._salaryRecord.size == 0) { 
-            return `Average paycheck for ${this.firstName} ${this.lastName} was 0.00`;
-        }
-
+        let averageSum=0;
+        this._salaryRecord.forEach((item)=>averageSum=averageSum+item);
+        averageSum=averageSum/(this._salaryRecord.size);
+        return `Average paycheck for ${this.firstName} ${this.lastName} was ${Math.round(averageSum)}`;
         
-        let sum = 0;
-        for (let amount of this._salaryRecord.values()) {
-            sum += amount;
-        }
-        return `Average paycheck for ${this.firstName} ${this.lastName} was ${(sum / this._salaryRecord.size).toFixed(2)}`;
     }
 }
